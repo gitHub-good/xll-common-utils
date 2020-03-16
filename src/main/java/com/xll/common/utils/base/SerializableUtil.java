@@ -5,8 +5,6 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 
 public class SerializableUtil {
-    public SerializableUtil() {
-    }
 
     public static String convert2String(Serializable obj) {
         try {

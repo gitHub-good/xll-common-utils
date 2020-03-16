@@ -6,20 +6,31 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.2.5.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.xll.common</groupId>
     <artifactId>xll-common-utils</artifactId>
     <version>v1.0.0</version>
-    <name>xll-common-utils</name>
+    <packaging>jar</packaging>
+    <name>${project.artifactId}</name>
     <description>通用工具类</description>
+    <!-- 打包发布 -->
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <name>Nexus Release Repository</name>
+            <url>http://49.234.81.87:8081/nexus/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>Nexus Snapshot Repository</name>
+            <url>http://49.234.81.87:8081/nexus/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>3.2.4.RELEASE</spring.version>
-        <hibernate.version>3.5.1-Final</hibernate.version>
-        <version.mysql>5.1.17</version.mysql>
         <version.slf4j>1.7.5</version.slf4j>
         <version.slf4j>1.7.5</version.slf4j>
         <version.jackson>2.3.5</version.jackson>
@@ -31,7 +42,7 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
         <dependency>
@@ -82,7 +93,10 @@
             <artifactId>commons-io</artifactId>
             <version>2.2</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
         <!-- Base64 -->
         <dependency>
             <groupId>net.iharder</groupId>
@@ -142,8 +156,12 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId><!-- 生成源码 -->
+            </plugin>
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
